@@ -2,3 +2,29 @@ h1,h2,h3{
     color: red;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+html{
+    background-image: url(/www/images/textura3.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+}
+body{
+    margin: 0;
+}
+nav{
+    background-color: #6BADE0;
+    position: fixed;
+    text-align: center;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+}
+nav li{
+    display: inline-block;
+    font-size: 20px;
+    padding: 0px 40px 0px 40px;
+}
+a{
+    color: aqua;
+}
