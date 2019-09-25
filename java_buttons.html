@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="grafico"></div>
+    <button onclick="aleatorizar()">
+        Aleatorizar
+    </button>
+    <script>
+        
+        scatter1 = {
+            x:[7,2,3],
+            y:[10,12,15],
+            mode: 'markers + lines'
+        };
+        
+        scatter2 = {
+            x:[1,2,8,4,12],
+            y:[1,12,13,14,3],
+            mode: 'lines + markers'
+        };
+        data = [scatter1];
+        Plotly.newPlot("grafico",data);
+
+        function aleatorizar(){
+        Plotly.animate("grafico",{
+            data:[{y:[Math.random()*10,Math.random()*10,Math.random()*10]}]
+        })
+        }
+
+    </script>
+
+
+</body>
+</html>
