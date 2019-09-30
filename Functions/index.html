@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fibo(n){
+            if (n<2){
+                return 1;
+            }
+            else{
+                var j = fibo(n-1);
+                var h = fibo(n-2);
+                return j+h;
+            }
+        }
+        function aux(n){
+            if(n>=0){
+                aux(n-1);
+                console.log(fibo(n));
+            }
+        }
+        //aux(6);
+        function est_media(x,media){
+            function est_var(varianza){
+                return (x-media)/varianza;
+            }
+            return est_var
+        }
+        //console.log(est_media(5,45));
+
+        function ejercicio(x,y){
+            function aux(media1,varianza1,media2,varianza2){
+                console.log(typeof media1);
+                var x_stand = x.map(function aux2(val,index,array){return (est_media(array[index],media1)(varianza1))});
+                var y_stand = y.map(function aux2(val,index,array){return (est_media(array[index],media2)(varianza2))});
+                //console.log(x_stand);
+                //console.log(y_stand);
+                return x_stand.map(function aux2(val,index,array){return array[index]*y_stand[index]})
+            }
+            return aux;
+        }
+        var j = [1,8,9];
+        var k = [2,3,4];
+        console.log(ejercicio(j,k)(2,2,2,2));
+    </script>
+</body>
+</html>
