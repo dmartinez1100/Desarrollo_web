@@ -44,9 +44,48 @@
             }
             return aux;
         }
+
         var j = [1,8,9];
         var k = [2,3,4];
-        console.log(ejercicio(j,k)(2,2,2,2));
+        //console.log(ejercicio(j,k)(2,2,2,2));
+
+        var crearmascota = function(nombre){
+            var sexo;
+            return{
+                setnombre: function(newname){
+                    nombre = newname
+                },
+                getnombre: function(){
+                    return nombre;
+                },
+                getsex: function(){
+                    return sexo;
+                },
+                setsex: function(nsexo){
+                    if(typeof nsexo == "string"){
+                        return sexo = nsexo.toLowerCase();
+                    }
+                }
+            }
+        }
+        var j = crearmascota("lolo");
+        j.setnombre("Bruce");
+        //console.log(j.getnombre());
+        function maximo(positonly){
+            var maxim = -Infinity;
+            for (i=1;i<arguments.length;i++){
+                    if (arguments[i]>=maxim){
+                        maxim = arguments[i];
+                    }
+            }
+            return maxim;
+        }
+        //FUNCIONES FLECHA
+        var palabras = ["hola","Yisus","David"];
+        //console.log(palabras.map((palabra)=>{return palabra.length}));
+        //console.log(maximo(-12,Infinity,-18));
+        //SE EJECUTA A LA VEZ
+        ((pal) => {console.log(pal)})("hola");
     </script>
 </body>
 </html>
