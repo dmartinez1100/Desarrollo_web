@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function est_media(x,media){
+            function est_var(varianza){
+                return (x-media)/varianza;
+            }
+            return est_var
+        }
+
+        function correlacion(x,y){
+            function meds_y_vars(datos){
+                if (arguments[0] == self || arguments[0] == null){
+                    datos = [x.reduce((val1,val2)=>{return val1+val2})/x.length,2,
+                        y.reduce((val1,val2)=>{return val1+val2})/y.length,2
+                    ];
+                    datos[1] = x.reduce((val1,val2)=>{return Math.pow(val1-datos[0],2)+Math.pow(val2-datos[0],2)})/(x.length-1);
+                    datos[3] = y.reduce((val1,val2)=>{return Math.pow(val1-datos[2],2)+Math.pow(val2-datos[2],2)})/(y.length-1);
+                }
+                console.log("Vector de medias y varianzas");
+                console.log(datos);
+                var x_stand = x.map(function aux2(val,index,array){return (est_media(array[index],datos[0])(datos[1]))});
+                var y_stand = y.map(function aux2(val,index,array){return (est_media(array[index],datos[2])(datos[3]))});
+                //console.log(x_stand);
+                //console.log(y_stand);
+                return x_stand.map(function aux2(val,index,array){return array[index]*y_stand[index]}).reduce((val1,val2)=>{return val1+val2});
+            }
+            return meds_y_vars;
+        }
+        var j = [1,2,4];
+        var k = [1,2,4];
+        var mediasyvars = [2,3,2,6] // [media1,var1,media2,var2]
+        var correl = correlacion(j,k)(self);
+        console.log("Correlacion = ");
+        console.log(correl);
+    
+    </script>
+</body>
+</html>
