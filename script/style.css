@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.card{
+    flex: 1 calc(33% - 2rem);
+    border: 1px solid blue;
+    padding: 4px;
+}
+h1{
+    color: blue;
+}
