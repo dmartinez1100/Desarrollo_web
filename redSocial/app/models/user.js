@@ -1,7 +1,7 @@
 "user strict"
 
 var mongoose = require('mongoose')
-var Schema = mongose.Schema;
+var Schema = mongoose.Schema;
 
 var UserSchema = Schema({
     name:String,
@@ -14,4 +14,4 @@ var UserSchema = Schema({
     birthdate:String
 })
 
-module.exports = mongose.model('user',UserSchema);
+module.exports = mongoose.model('user',UserSchema);
