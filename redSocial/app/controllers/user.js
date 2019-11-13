@@ -14,6 +14,7 @@ function pruebas(req,res){
         message:"hola a la ruta de pruebas"
     })
 }
+//sign up
 function SaveUser(req,res){
     var params = req.body;
     var user = new User();
@@ -33,10 +34,25 @@ function SaveUser(req,res){
                 else{return res.status(404).send({message:"algo fallo, ni idea que es"})}
             })
         })
-        return res.status(200).send(user)
     }
     else{
         return res.status(200).send({message:"envia los datos completos"})
     }
+}
+//log in
+function LogIn(req,res){
+    var params = req.body;
+    var email = params.email;
+    var password = params.password;
+
+    User.findOne({email:email},(err,user)=>{
+        if(err){return res.status(500).send({message:"error al buscar usuario"})}
+        if(user){
+            bcrypt.compare(password,user.password,(err,check)=>{
+                if(err){return res.status(404).send({message:"invalid password"})}
+                else{return res.status(200).send({user})}
+            })
+        }
+    })
 }
 module.exports = {home,pruebas,SaveUser}

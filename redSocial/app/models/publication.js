@@ -4,11 +4,6 @@ var mongoose = require('mongoose')
 var Schema = mongose.Schema;
 
 var PublicationSchema = Schema({
-
-})
-
-
-var UserSchema = Schema({
     content:String,
     file:String,
     email:String,

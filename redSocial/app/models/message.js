@@ -3,10 +3,6 @@
 var mongoose = require('mongoose')
 var Schema = mongose.Schema;
 
-var PublicationSchema = Schema({
-
-})
-
 
 var MessageSchema = Schema({
     emisor:{type:Schema.ObjectId,ref:'User'},
