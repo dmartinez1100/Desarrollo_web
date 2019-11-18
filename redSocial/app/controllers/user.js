@@ -2,6 +2,7 @@
 
 var User = require("../models/user")
 var bcrypt = require("bcrypt")
+var token = require("../services/jwt")
 
 function home(req,res){
     res.status(200).send({
@@ -18,7 +19,7 @@ function pruebas(req,res){
 function SaveUser(req,res){
     var params = req.body;
     var user = new User();
-    console.log(params)
+    //console.log(params)
 
     if(params.name){
         user.name = params.name;
@@ -26,8 +27,9 @@ function SaveUser(req,res){
         user.email = params.email;
         user.role = params.role;
         user.image = params.image;
-        bcrypt.hash(params.password,null,null,(err,hash)=>{
+        bcrypt.hash(params.password,5,(err,hash)=>{
             user.password = hash;
+            console.log(hash)
             user.save((err,userStored)=>{
                 if(err){res.status(500).send({message:"error al almacenar datos"})}
                 if(userStored){return res.status(200).send({user})}
@@ -49,10 +51,16 @@ function LogIn(req,res){
         if(err){return res.status(500).send({message:"error al buscar usuario"})}
         if(user){
             bcrypt.compare(password,user.password,(err,check)=>{
-                if(err){return res.status(404).send({message:"invalid password"})}
-                else{return res.status(200).send({user})}
+                if(check){
+                    if(params.gettoken){
+                        return res.status(200).send({token:token.createToken(user)})
+                    }else{
+                        return res.status(200).send({user})
+                    }
+                }
+                else{return res.status(404).send({message:"invalid password"})}
             })
         }
     })
 }
-module.exports = {home,pruebas,SaveUser}
+module.exports = {home,pruebas,SaveUser,LogIn}
