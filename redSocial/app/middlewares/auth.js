@@ -2,7 +2,7 @@
 
 var jwt = require("jwt-simple")
 var moment = require("moment")
-var secret = "calve_segura123"
+var secret = "clave_segura123"
 
 function auth(req,res,next){
     if(!req.headers.auth){
@@ -11,12 +11,13 @@ function auth(req,res,next){
         })
     }
     var token = req.headers.auth.replace(/['"]+/g,'')
-
+    //console.log(token)
     try{
-        var payload = jwt.encode(token,secret)
-        if (payload.exp <= moment().unix()){
-            return res.status(401).send({message:"usuario no autorizado"})
-        }
+        var payload = jwt.decode(token,secret)
+        //console.log(payload)
+         if (payload.exp <= moment().unix()){
+             return res.status(401).send({message:"usuario no autorizado"})
+         }
     }
     catch(ex){
         return res.status(500).send({message:"error en autenticacion"})
