@@ -11,4 +11,4 @@ var PublicationSchema = Schema({
     user:{type:Schema.ObjectId,ref:'User'}
 })
 
-module.exports = mongose.model('Publication',UserSchema);
+module.exports = mongose.model('Publication',PublicationSchema);

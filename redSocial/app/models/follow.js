@@ -9,4 +9,4 @@ var FollowSchema = Schema({
     followed:{type:Schema.ObjectId,ref:'User'}
 })
 
-module.exports = mongose.model('Follow',UserSchema);
+module.exports = mongose.model('Follow',Followchema);
